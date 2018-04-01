@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import FlightDetails from './containers/FlightDetails/FlightDetails';
+import SpaceXFlights from './containers/SpaceXFlights/SpaceXFlights';
 import Layout from './components/Layout/Layout';
 
 /*======================================================================
@@ -11,7 +11,7 @@ class App extends Component {
     return (
       <div>
         <Layout>
-          <FlightDetails />
+          <SpaceXFlights />
         </Layout>
       </div>
     );
