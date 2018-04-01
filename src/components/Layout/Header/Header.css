@@ -1,0 +1,11 @@
+.Header {
+    background-color: #f7f7f7;
+    width: 100%;
+    height: 80px;
+    border-radius: 2px;
+}
+
+.HeaderName {
+    text-align: center;
+    padding-top: 10px;
+}

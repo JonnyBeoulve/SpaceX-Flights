@@ -1,0 +1,14 @@
+.Footer {
+    height: 300px;
+    width: 100%;
+    border-radius: 2px;
+}
+
+.Footer p {
+    line-height: 280px;
+    text-align: center;
+}
+
+a:visited {
+    color: #2164bb;
+}
