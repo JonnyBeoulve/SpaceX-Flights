@@ -1,5 +1,37 @@
 .Flight {
   width: 100%;
+  padding: 5rem 0 5rem 0;
   background-color: #999;
   border-radius: 2px;
+}
+
+.FlightPatch {
+  width: 100%;
+}
+
+.Flight h2 {
+  font-size: 2em;
+}
+
+.Wrapper {
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.Col1of2 {
+  float: left;
+  width: calc((100% - 12rem) / 2);
+  margin: 0 8rem 0 2rem;
+}
+
+.Col2of2 {
+  float: left;
+  width: calc((100% - 12rem) / 2);
+  margin-right: 2rem;
+}
+
+.Clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
 }

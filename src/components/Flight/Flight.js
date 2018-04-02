@@ -9,17 +9,23 @@ import classes from './Flight.css';
 const Flight = (props) => {
 
   return (
-      <div className={classes.Flight}>
-          <ul>
-            <li><img src={props.flightInfo.flightMissionPatch} alt='SpaceX mission patch'></img></li>
-            <iframe title="SpaceX Flight Video" width="560" height="315" src={props.flightInfo.flightVideoEmbed} frameborder="0" allow="autoplay; encrypted-media"></iframe>
-            <li>Flight #{props.flightInfo.flightNumber}</li>
-            <li>{props.flightInfo.flightDetails}</li>
-            <li>Rocket: {props.flightInfo.flightName}</li>
-            <li>Launch Site: {props.flightInfo.flightLaunchSite}</li>
-            <li>Telemetry: {props.flightInfo.flightTelemetry}</li>
-          </ul>
-      </div> 
+      <section className={classes.Flight}>
+        <div className={[classes.Wrapper, classes.Clearfix].join(' ')}>
+          <div className={classes.Col1of2}>
+            <img className={classes.FlightPatch} src={props.flightInfo.flightMissionPatch} alt='SpaceX mission patch'></img>
+          </div>
+          <div className={classes.Col2of2}>
+            <h2>Flight #{props.flightInfo.flightNumber}</h2>
+            <hr />
+            <p>{props.flightInfo.flightDetails}</p>
+            <p><strong>Flight Year:</strong> {props.flightInfo.flightYear}</p>
+            <p><strong>Rocket:</strong> {props.flightInfo.flightName}</p>
+            <p><strong>Launch Site:</strong> {props.flightInfo.flightLaunchSite}</p>
+            <p><strong>Telemetry:</strong> {props.flightInfo.flightTelemetry}</p>
+            <iframe title="SpaceX Flight Video" width="560" height="315" src={props.flightInfo.flightVideoEmbed} frameBorder="0" allow="autoplay; encrypted-media"></iframe>
+          </div>
+        </div>
+      </section> 
   );
 }
 
