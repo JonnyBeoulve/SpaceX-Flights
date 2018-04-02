@@ -9,7 +9,8 @@ https://spacex-f.firebaseapp.com/
 ## Programming
 * HTML
 * CSS
-* React
+* JavaScript
+* React.js
 
 ## Notes
 Coming soon...
