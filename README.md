@@ -7,9 +7,9 @@ An alpha version can be seen here:
 https://spacex-f.firebaseapp.com/
 
 ## Programming
-HTML
-CSS
-React
+* HTML
+* CSS
+* React
 
 ## Notes
 Coming soon...
