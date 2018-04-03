@@ -9,23 +9,25 @@ import classes from './Flight.css';
 const Flight = (props) => {
 
   return (
-      <section className={classes.Flight}>
-        <div className={[classes.Wrapper, classes.Clearfix].join(' ')}>
-          <div className={classes.Col1of2}>
-            <img className={classes.FlightPatch} src={props.flightInfo.flightMissionPatch} alt='SpaceX mission patch'></img>
-          </div>
-          <div className={classes.Col2of2}>
-            <h2>Flight #{props.flightInfo.flightNumber}</h2>
-            <hr />
-            <p>{props.flightInfo.flightDetails}</p>
-            <p><strong>Flight Year:</strong> {props.flightInfo.flightYear}</p>
-            <p><strong>Rocket:</strong> {props.flightInfo.flightName}</p>
-            <p><strong>Launch Site:</strong> {props.flightInfo.flightLaunchSite}</p>
-            <p><strong>Telemetry:</strong> {props.flightInfo.flightTelemetry}</p>
-            <iframe title="SpaceX Flight Video" width="560" height="315" src={props.flightInfo.flightVideoEmbed} frameBorder="0" allow="autoplay; encrypted-media"></iframe>
-          </div>
+    <div className={[classes.Wrapper, classes.Clearfix].join(' ')}>
+      <div className={classes.Col1of2}>
+        <img className={classes.FlightPatch} src={props.flightInfo.flightMissionPatch} alt='SpaceX mission patch'></img>
+      </div>
+      <div className={classes.Col2of2}>
+        <h2>Flight #{props.flightInfo.flightNumber}</h2>
+        <hr />
+        <p>{props.flightInfo.flightDetails}</p>
+        <p>{props.flightInfo.flightYear} <span className={classes.Subtitle}>Flight Year</span> </p>
+        <p>{props.flightInfo.flightName} <span className={classes.Subtitle}>Rocket</span></p>
+        <p>{props.flightInfo.flightLaunchSite} <span className={classes.Subtitle}>Launch Site</span></p>
+        <p>{props.flightInfo.flightSuccess} <span className={classes.Subtitle}>Outcome</span></p>
+        <div className={classes.Links}>
+          <a href={props.flightInfo.flightTelemetry} target="_blank" className={classes.Link}>TELEMETRY</a>
+          <a href={props.flightInfo.flightArticle} target="_blank" className={classes.Link}>READ MORE</a>
         </div>
-      </section> 
+        <iframe title="SpaceX Flight Video" width="100%" height="360px" src={props.flightInfo.flightVideoEmbed} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen></iframe>
+      </div>
+    </div>
   );
 }
 

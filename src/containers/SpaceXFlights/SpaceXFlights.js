@@ -3,6 +3,7 @@ import axios from 'axios';
 import Select from 'react-select';
 
 import Auxiliary from '../../hoc/Auxiliary';
+import classes from './SpaceXFlights.css';
 import Flight from '../../components/Flight/Flight';
 import Footer from '../../components/Layout/Footer/Footer';
 import Header from '../../components/Layout/Header/Header';
@@ -22,7 +23,7 @@ const flightOptions = [
     { value: '41', label: 'Flight 41' }, { value: '42', label: 'Flight 42' }, { value: '43', label: 'Flight 43' }, { value: '44', label: 'Flight 44' }, { value: '45', label: 'Flight 45' },
     { value: '46', label: 'Flight 46' }, { value: '47', label: 'Flight 47' }, { value: '48', label: 'Flight 48' }, { value: '49', label: 'Flight 49' }, { value: '50', label: 'Flight 50' },
     { value: '51', label: 'Flight 51' }, { value: '52', label: 'Flight 52' }, { value: '53', label: 'Flight 53' }, { value: '54', label: 'Flight 54' }, { value: '55', label: 'Flight 55' },
-    { value: '56', label: 'Flight 56' }, { value: '57', label: 'Flight 57' }, { value: '58', label: 'Flight 58' }
+    { value: '56', label: 'Flight 56' }, { value: '57', label: 'Flight 57' }, { value: '58', label: 'Flight 58' }, { value: '59', label: 'Flight 59' }
 ];
 
 /*======================================================================
@@ -46,10 +47,12 @@ class SpaceXFlights extends Component {
                 flightLaunchSite: null,
                 flightMissionPatch: null,
                 flightVideoEmbed: null,
-                flightTelemetry: null
+                flightTelemetry: null,
+                flightArticle: null,
+                flightSuccess: null
             },
             loading: true,
-            selectValue: 58
+            selectValue: 59
         };
     }
 
@@ -75,7 +78,10 @@ class SpaceXFlights extends Component {
 
     /*======================================================================
     // This will send a GET request to the SpaceX API to obtain details
-    // for a particular flight.
+    // for a particular flight. Video links will be altered into an
+    // embeddable code. Telemetry will be set to the FlightClub homepage
+    // if no build is provided. This will also add a period to the end of
+    // the description if it's missing one (common).
     ======================================================================*/
     getInformation = (query) => {
         this.setState({
@@ -90,20 +96,38 @@ class SpaceXFlights extends Component {
 
             let telemetry;
             if (res.data[0].telemetry.flight_club === null) {
-                telemetry = "Not Available";
+                telemetry = "https://www.flightclub.io";
             } else {
                 telemetry = res.data[0].telemetry.flight_club;
             }
+
+            let outcome;
+            if (res.data[0].launch_success === true) {
+                outcome = "Mission Successful";
+            } else {
+                outcome = "Mission Failed";
+            }
+
+            let detail = res.data[0].details;
+            detail = detail.slice(-1);
+            if (detail !== ".") {
+                detail = res.data[0].details + ".";
+            } else {
+                detail = res.data[0].details;
+            }
+
             this.setState({
                 flightInformation: {
                     flightNumber: res.data[0].flight_number,
                     flightName: res.data[0].rocket.rocket_name,
                     flightYear: res.data[0].launch_year,
-                    flightDetails: res.data[0].details,
+                    flightDetails: detail,
                     flightLaunchSite: res.data[0].launch_site.site_name_long,
                     flightMissionPatch: res.data[0].links.mission_patch,
                     flightVideoEmbed: videoEmbed,
-                    flightTelemetry: telemetry
+                    flightTelemetry: telemetry,
+                    flightArticle: res.data[0].links.article_link,
+                    flightSuccess: outcome
                 },
                 loading: false
             })
@@ -120,8 +144,12 @@ class SpaceXFlights extends Component {
         return (
             <Auxiliary>
                 <Header />
-                <Select onChange={this.selectFlight} options={flightOptions} simpleValue value={this.state.selectValue} />
-                <Flight flightInfo={this.state.flightInformation} />
+                <Select className={classes.Select} onChange={this.selectFlight} options={flightOptions} simpleValue value={this.state.selectValue} />
+                <section className={classes.Flight}>
+                    {(this.state.loading)
+                        ? <div className={classes.Loader}></div>
+                        : <Flight flightInfo={this.state.flightInformation} /> }
+                </section>
                 <Footer />
             </Auxiliary>
         );

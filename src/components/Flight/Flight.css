@@ -1,21 +1,68 @@
-.Flight {
-  width: 100%;
-  padding: 5rem 0 5rem 0;
-  background-color: #999;
-  border-radius: 2px;
-}
-
 .FlightPatch {
   width: 100%;
 }
 
-.Flight h2 {
-  font-size: 2em;
+.Wrapper {
+  max-width: 92rem;
+  margin: 0 auto;
 }
 
-.Wrapper {
-  max-width: 80rem;
-  margin: 0 auto;
+.Wrapper h2 {
+  font-size: 3em;
+  margin: 0 0 10px;
+}
+
+.Wrapper .Subtitle {
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  color: white;
+  margin-right: 10px;
+  float: right;
+}
+
+.Wrapper p {
+  font-family: Helvetica, sans-serif;
+  color: #bbb;
+  line-height: 2;
+}
+
+.Wrapper hr {
+  border: 0; 
+  height: 1px; 
+  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  margin: 0 0 30px;
+}
+
+.Wrapper .Links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.Wrapper .Link {
+  width: 162px;
+  height: 37px;
+  line-height: 37px;
+  background-color: #009bdf;
+  font-family: Helvetica, sans-serif;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  color: black;
+  transition: 0.5s color;
+  position: relative;
+  z-index: 99;
+  text-decoration: none;
+}
+
+.Wrapper .Link:hover {
+  color: white;
+  text-decoration: none;
 }
 
 .Col1of2 {
@@ -34,4 +81,65 @@
   content: "";
   display: table;
   clear: both;
+}
+
+@media only screen and (max-width: 1336px) {
+
+  .Wrapper .Links {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 20px;
+  }
+
+  .FlightPatch {
+    width: 95%;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .Wrapper h2 {
+    text-align: center;
+  } 
+
+  .Wrapper p {
+    display: block;
+    font-size: 1.1em;
+    padding: 0 1em 0 1em;
+  }
+
+  .Wrapper .Subtitle {
+    float: left;
+  }
+
+  .Col1of2 {
+      width: 100%;
+      padding: none;
+      margin: none;
+  }
+
+  .Col2of2 {
+      width: 100%;
+      padding: none;
+      margin-right: none;
+  }
+}
+
+@media only screen and (max-width: 479px) {
+
+  .FlightPatch {
+    width: 80%;
+    display: block;
+    margin: 0 0 20px 0;
+  }
+
+  .Wrapper p {
+    display: flex;
+    flex-direction: column;
+    font-size: .8em;
+  }
+
+  .Wrapper .Subtitle {
+    float: none;
+  }
 }
