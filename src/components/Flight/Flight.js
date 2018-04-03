@@ -11,7 +11,7 @@ const Flight = (props) => {
   return (
     <div className={[classes.Wrapper, classes.Clearfix].join(' ')}>
       <div className={classes.Col1of2}>
-        <img className={classes.FlightPatch} src={props.flightInfo.flightMissionPatch} alt='SpaceX mission patch'></img>
+        <img className={classes.FlightPatch} src={props.flightInfo.flightMissionPatch} alt='SpaceX Mission Patch'></img>
       </div>
       <div className={classes.Col2of2}>
         <h2>Flight #{props.flightInfo.flightNumber}</h2>
