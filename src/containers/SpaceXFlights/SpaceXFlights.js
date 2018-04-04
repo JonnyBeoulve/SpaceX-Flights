@@ -69,7 +69,6 @@ class SpaceXFlights extends Component {
     // will be made for the corresponding flight number.
     ======================================================================*/
     selectFlight = (selectedNum) => {
-        console.log(selectedNum);
         this.getInformation(selectedNum);
         this.setState({
             selectValue: selectedNum
