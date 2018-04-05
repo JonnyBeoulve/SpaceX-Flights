@@ -11,3 +11,6 @@ https://spacex-f.firebaseapp.com/
 * CSS
 * JavaScript
 * React.js
+
+## Notes
+API provided by the fine folks over at https://github.com/r-spacex/SpaceX-API.
