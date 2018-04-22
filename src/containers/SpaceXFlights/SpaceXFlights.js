@@ -23,7 +23,7 @@ const flightOptions = [
     { value: '41', label: 'Flight 41' }, { value: '42', label: 'Flight 42' }, { value: '43', label: 'Flight 43' }, { value: '44', label: 'Flight 44' }, { value: '45', label: 'Flight 45' },
     { value: '46', label: 'Flight 46' }, { value: '47', label: 'Flight 47' }, { value: '48', label: 'Flight 48' }, { value: '49', label: 'Flight 49' }, { value: '50', label: 'Flight 50' },
     { value: '51', label: 'Flight 51' }, { value: '52', label: 'Flight 52' }, { value: '53', label: 'Flight 53' }, { value: '54', label: 'Flight 54' }, { value: '55', label: 'Flight 55' },
-    { value: '56', label: 'Flight 56' }, { value: '57', label: 'Flight 57' }, { value: '58', label: 'Flight 58' }, { value: '59', label: 'Flight 59' }
+    { value: '56', label: 'Flight 56' }, { value: '57', label: 'Flight 57' }, { value: '58', label: 'Flight 58' }, { value: '59', label: 'Flight 59' }, { value: '60', label: 'Flight 60' }
 ];
 
 /*======================================================================
@@ -52,7 +52,7 @@ class SpaceXFlights extends Component {
                 flightSuccess: null
             },
             loading: true,
-            selectValue: 59
+            selectValue: 58
         };
     }
 

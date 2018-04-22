@@ -7,6 +7,7 @@
 .Footer p {
     line-height: 280px;
     text-align: center;
+    letter-spacing: 1px;
 }
 
 a:visited {

@@ -10,6 +10,7 @@
 .Wrapper h2 {
   font-size: 2.5em;
   margin: 0 0 10px;
+  letter-spacing: 5px;
 }
 
 .Wrapper .Subtitle {
@@ -18,11 +19,13 @@
   color: white;
   margin-right: 10px;
   float: right;
+  letter-spacing: 1px;
 }
 
 .Wrapper p {
   font-family: Helvetica, sans-serif;
-  color: #aaa;
+  color: #b6bcc9;
+  letter-spacing: 1px;
   line-height: 2;
 }
 
@@ -48,8 +51,9 @@
   height: 37px;
   line-height: 37px;
   background-color: #009bdf;
-  font-family: Helvetica, sans-serif;
+  font-family: 'Orbitron', sans-serif;
   font-weight: bold;
+  letter-spacing: 1px;
   text-align: center;
   letter-spacing: 1px;
   border-radius: 4px;
