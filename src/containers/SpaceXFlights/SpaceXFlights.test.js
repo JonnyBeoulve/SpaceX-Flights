@@ -8,10 +8,15 @@ import Footer from '../../components/Layout/Footer/Footer';
 // Instantiate new Adapter for testing
 configure({adapter: new Adapter()})
 
-// Mock test for Chat state
+// Mock test for SpaceX DOM state
 describe('<SpaceXFlights />', () => {
+    let wrapper;
+
+    beforeEach(() => {
+        wrapper = shallow(<SpaceXFlights />);
+    });
+
     it('Contains one footer component in DOM', () => {
-        const wrapper = shallow(<SpaceXFlights />);
         expect(wrapper.find(Footer)).toHaveLength(1);
     })
 });

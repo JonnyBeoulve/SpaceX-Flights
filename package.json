@@ -1,6 +1,6 @@
 {
   "name": "spacex-flights",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "description": "This React-based website is a virtual museum for all SpaceX flights. Users are able to view a variety of interesting information for each flight and view video footage, all provided by an unofficial SpaceX API.",
   "main": "index.js",
