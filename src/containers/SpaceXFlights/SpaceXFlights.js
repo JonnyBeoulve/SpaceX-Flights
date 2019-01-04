@@ -125,6 +125,7 @@ class SpaceXFlights extends Component {
     render () {
         return (
             <Auxiliary>
+                <div>
                 <Header />
                 <Select simpleValue className={classes.Select} onChange={this.selectFlight} options={ALL_FLIGHTS} value={this.state.selectedFlight} />
                     <article className={classes.Flight}>
@@ -133,6 +134,7 @@ class SpaceXFlights extends Component {
                             : <Flight flightInfo={this.state.flightInformation} /> }
                     </article>
                 <Footer />
+                </div>
             </Auxiliary>
         );
     }
