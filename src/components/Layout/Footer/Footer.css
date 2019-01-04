@@ -10,6 +10,10 @@
     letter-spacing: 1px;
 }
 
+a {
+    color: #bbb;
+}
+
 a:visited {
     color: #bbb;
 }

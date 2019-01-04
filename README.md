@@ -14,3 +14,5 @@ https://spacex-f.firebaseapp.com/
 
 ## Notes
 API provided by the fine folks over at https://github.com/r-spacex/SpaceX-API.
+
+In the near future I will improve the API call behavior of the app and make the dropdown selections dynamic.

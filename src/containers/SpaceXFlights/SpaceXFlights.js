@@ -35,7 +35,7 @@ class SpaceXFlights extends Component {
                 flightSuccess: null
             },
             loading: true,
-            selectedFlight: 66
+            selectedFlight: 73
         };
     }
 

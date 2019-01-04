@@ -64,5 +64,12 @@ export const ALL_FLIGHTS = [
     { value: '63', label: 'Flight 63' }, 
     { value: '64', label: 'Flight 64' },
     { value: '65', label: 'Flight 65' },
-    { value: '66', label: 'Flight 66' }
+    { value: '66', label: 'Flight 66' },
+    { value: '67', label: 'Flight 67' },
+    { value: '68', label: 'Flight 68' },
+    { value: '69', label: 'Flight 69' },
+    { value: '70', label: 'Flight 70' },
+    { value: '71', label: 'Flight 71' },
+    { value: '72', label: 'Flight 72' },
+    { value: '73', label: 'Flight 73' },
 ];
