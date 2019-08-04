@@ -14,7 +14,7 @@
 }
 
 .Wrapper .Subtitle {
-  font-family: 'Orbitron', sans-serif;
+  font-family: "Orbitron", sans-serif;
   text-transform: uppercase;
   color: white;
   margin-right: 10px;
@@ -30,8 +30,8 @@
 }
 
 .Wrapper hr {
-  border: 0; 
-  height: 1px; 
+  border: 0;
+  height: 1px;
   background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
   background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
   background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
@@ -51,7 +51,7 @@
   height: 37px;
   line-height: 37px;
   background-color: #009bdf;
-  font-family: 'Orbitron', sans-serif;
+  font-family: "Orbitron", sans-serif;
   font-weight: bold;
   letter-spacing: 1px;
   text-align: center;
@@ -88,7 +88,6 @@
 }
 
 @media only screen and (max-width: 1336px) {
-
   .Wrapper .Links {
     display: flex;
     flex-direction: row;
@@ -109,7 +108,7 @@
 
   .Wrapper h2 {
     text-align: center;
-  } 
+  }
 
   .Wrapper p {
     padding: 0 1em 0 1em;
@@ -123,20 +122,19 @@
   }
 
   .Col1of2 {
-      width: 100%;
-      padding: 0;
-      margin: 0;
+    width: 100%;
+    padding: 0;
+    margin: 0;
   }
 
   .Col2of2 {
-      width: 100%;
-      padding: none;
-      margin-right: none;
+    width: 100%;
+    padding: none;
+    margin-right: none;
   }
 }
 
 @media only screen and (max-width: 479px) {
-
   .FlightPatch {
     width: 80%;
     display: block;
@@ -146,10 +144,10 @@
 
   .Wrapper h2 {
     font-size: 2em;
-  } 
+  }
 
   .Wrapper p {
-    font-size: .8em;
+    font-size: 0.8em;
   }
 
   .Wrapper .Subtitle {

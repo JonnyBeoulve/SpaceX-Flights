@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import SpaceXFlights from './containers/SpaceXFlights/SpaceXFlights';
-import Layout from './components/Layout/Layout';
+import SpaceXFlights from "./containers/SpaceXFlights/SpaceXFlights";
+import Layout from "./components/Layout/Layout";
 
 /*======================================================================
 // This will handle the rendering of the Flight Details page.

@@ -1,20 +1,19 @@
 .Header {
-    width: 100%;
-    height: 160px;
-    border-radius: 2px;
+  width: 100%;
+  height: 160px;
+  border-radius: 2px;
 }
 
 .HeaderName {
-    font-size: 2em;
-    text-align: center;
-    padding-top: 2px;
-    text-transform: uppercase;
-    letter-spacing: 5px;
+  font-size: 2em;
+  text-align: center;
+  padding-top: 2px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
 }
 
 @media only screen and (max-width: 479px) {
-
-    .HeaderName {
-        font-size: 1.5em;
-    }
+  .HeaderName {
+    font-size: 1.5em;
+  }
 }
