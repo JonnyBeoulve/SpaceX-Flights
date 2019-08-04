@@ -99,8 +99,6 @@ class SpaceXFlights extends Component {
           detail = res.data[0].details;
         }
 
-        console.log("resdata: ", res.data[0].links.mission_patch);
-
         this.setState({
           flightInformation: {
             flightNumber: res.data[0].flight_number,
