@@ -47,7 +47,7 @@ class SpaceXFlights extends Component {
       .then(res => {
         this.setState({
           data: res.data,
-          selectedFlight: res.data.length - 1,
+          selectedFlight: res.data.length,
           loading: false
         });
       })
