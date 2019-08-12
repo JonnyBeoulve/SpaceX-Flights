@@ -5,7 +5,6 @@ import Auxiliary from "../../hoc/Auxiliary";
 import Flight from "../../components/Flight/Flight";
 import Footer from "../../components/Layout/Footer/Footer";
 import Header from "../../components/Layout/Header/Header";
-import { ALL_FLIGHTS } from "../../store/store";
 import classes from "./SpaceXFlights.css";
 
 /*======================================================================
@@ -21,8 +20,8 @@ class SpaceXFlights extends Component {
   constructor() {
     super();
     this.state = {
-      data: null,
-      selectedFlight: 82,
+      data: [],
+      selectedFlight: null,
       loading: true
     };
   }
@@ -39,7 +38,7 @@ class SpaceXFlights extends Component {
     // This will send a GET request to the SpaceX API to obtain details
     // for all flights.
     ======================================================================*/
-  getData = query => {
+  getData = () => {
     this.setState({
       loading: true
     });
@@ -48,6 +47,7 @@ class SpaceXFlights extends Component {
       .then(res => {
         this.setState({
           data: res.data,
+          selectedFlight: res.data.length - 1,
           loading: false
         });
       })
@@ -59,29 +59,29 @@ class SpaceXFlights extends Component {
       });
   };
 
-  /*====================================================================== 
-    // When a user selects an option from the dropdown, a GET request
-    // will be made for the corresponding flight number.
-    ======================================================================*/
-  selectFlight = selectedNum => {
-    this.setState({
-      selectedFlight: selectedNum
-    });
-  };
-
   render() {
     const { data, selectedFlight, loading } = this.state;
+    const FLIGHT_OPTIONS = data.map(flight => ({
+      key: flight.flight_number,
+      value: flight.flight_number,
+      label: `Flight ${flight.flight_number}`
+    }));
     return (
       <Auxiliary>
         <div>
           <Header />
-          <Select
-            simpleValue
-            className={classes.Select}
-            onChange={this.selectFlight}
-            options={ALL_FLIGHTS}
-            value={this.state.selectedFlight}
-          />
+          {FLIGHT_OPTIONS.length > 0 && (
+            <Select
+              simpleValue
+              className={classes.Select}
+              onChange={selectedNum =>
+                this.setState({ selectedFlight: selectedNum })
+              }
+              options={FLIGHT_OPTIONS}
+              value={selectedFlight}
+            />
+          )}
+
           <article className={classes.Flight}>
             {loading ? (
               <div className={classes.Loader} />

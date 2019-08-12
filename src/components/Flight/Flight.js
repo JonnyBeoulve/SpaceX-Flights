@@ -1,5 +1,4 @@
 import React from "react";
-
 import classes from "./Flight.css";
 
 /*======================================================================
@@ -7,24 +6,15 @@ import classes from "./Flight.css";
 // Flight using the object passed in from the SpaceXFlights container.
 ======================================================================*/
 const Flight = ({ flight }) => {
-  let videoLink = flight.links.video_link;
-  let videoEmbed = videoLink.slice(-11);
-  videoEmbed = videoEmbed.replace(/^/, "https://www.youtube.com/embed/");
-
-  const telemetry = flight.telemetry.flight_club
+  const flightVideoEmbed = `https://www.youtube.com/embed/${flight.links.video_link.slice(
+    -11
+  )}`;
+  const flightTelemetry = flight.telemetry.flight_club
     ? flight.telemetry.flight_club
     : "https://www.flightclub.io";
-  const outcome = flight.launch_success
+  const flightOutcome = flight.launch_success
     ? "Mission Successful"
     : "Mission Failed";
-
-  let detail = flight.details;
-  detail = detail.slice(-1);
-  if (detail !== ".") {
-    detail = flight.details + ".";
-  } else {
-    detail = flight.details;
-  }
 
   return (
     <div className={[classes.Wrapper, classes.Clearfix].join(" ")}>
@@ -38,7 +28,7 @@ const Flight = ({ flight }) => {
       <div className={classes.Col2of2}>
         <h2>Flight #{flight.flight_number}</h2>
         <hr />
-        <p>{detail}</p>
+        <p>{flight.details}</p>
         <p>
           {flight.launch_year}{" "}
           <span className={classes.Subtitle}>Flight Year</span>{" "}
@@ -52,10 +42,10 @@ const Flight = ({ flight }) => {
           <span className={classes.Subtitle}>Launch Site</span>
         </p>
         <p>
-          {outcome} <span className={classes.Subtitle}>Outcome</span>
+          {flightOutcome} <span className={classes.Subtitle}>Outcome</span>
         </p>
         <div className={classes.Links}>
-          <a href={telemetry} target="_blank" className={classes.Link}>
+          <a href={flightTelemetry} target="_blank" className={classes.Link}>
             TELEMETRY
           </a>
           <a
@@ -70,7 +60,7 @@ const Flight = ({ flight }) => {
           title="SpaceX Flight Video"
           width="100%"
           height="360px"
-          src={videoEmbed}
+          src={flightVideoEmbed}
           frameBorder="0"
           allow="autoplay; encrypted-media"
           allowFullScreen
