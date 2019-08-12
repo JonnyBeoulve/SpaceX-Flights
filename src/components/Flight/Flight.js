@@ -6,46 +6,60 @@ import classes from "./Flight.css";
 // This is responsible for displaying the details for a SpaceX
 // Flight using the object passed in from the SpaceXFlights container.
 ======================================================================*/
-const Flight = props => {
+const Flight = ({ flight }) => {
+  let videoLink = flight.links.video_link;
+  let videoEmbed = videoLink.slice(-11);
+  videoEmbed = videoEmbed.replace(/^/, "https://www.youtube.com/embed/");
+
+  const telemetry = flight.telemetry.flight_club
+    ? flight.telemetry.flight_club
+    : "https://www.flightclub.io";
+  const outcome = flight.launch_success
+    ? "Mission Successful"
+    : "Mission Failed";
+
+  let detail = flight.details;
+  detail = detail.slice(-1);
+  if (detail !== ".") {
+    detail = flight.details + ".";
+  } else {
+    detail = flight.details;
+  }
+
   return (
     <div className={[classes.Wrapper, classes.Clearfix].join(" ")}>
       <div className={classes.Col1of2}>
         <img
           className={classes.FlightPatch}
-          src={props.flightInfo.flightMissionPatch}
+          src={flight.links.mission_patch}
           alt="SpaceX Mission Patch"
         />
       </div>
       <div className={classes.Col2of2}>
-        <h2>Flight #{props.flightInfo.flightNumber}</h2>
+        <h2>Flight #{flight.flight_number}</h2>
         <hr />
-        <p>{props.flightInfo.flightDetails}</p>
+        <p>{detail}</p>
         <p>
-          {props.flightInfo.flightYear}{" "}
+          {flight.launch_year}{" "}
           <span className={classes.Subtitle}>Flight Year</span>{" "}
         </p>
         <p>
-          {props.flightInfo.flightName}{" "}
+          {flight.rocket.rocket_name}{" "}
           <span className={classes.Subtitle}>Rocket</span>
         </p>
         <p>
-          {props.flightInfo.flightLaunchSite}{" "}
+          {flight.launch_site.site_name_long}{" "}
           <span className={classes.Subtitle}>Launch Site</span>
         </p>
         <p>
-          {props.flightInfo.flightSuccess}{" "}
-          <span className={classes.Subtitle}>Outcome</span>
+          {outcome} <span className={classes.Subtitle}>Outcome</span>
         </p>
         <div className={classes.Links}>
-          <a
-            href={props.flightInfo.flightTelemetry}
-            target="_blank"
-            className={classes.Link}
-          >
+          <a href={telemetry} target="_blank" className={classes.Link}>
             TELEMETRY
           </a>
           <a
-            href={props.flightInfo.flightArticle}
+            href={flight.links.article_link}
             target="_blank"
             className={classes.Link}
           >
@@ -56,7 +70,7 @@ const Flight = props => {
           title="SpaceX Flight Video"
           width="100%"
           height="360px"
-          src={props.flightInfo.flightVideoEmbed}
+          src={videoEmbed}
           frameBorder="0"
           allow="autoplay; encrypted-media"
           allowFullScreen

@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Select from "react-select";
-
 import Auxiliary from "../../hoc/Auxiliary";
-import classes from "./SpaceXFlights.css";
 import Flight from "../../components/Flight/Flight";
 import Footer from "../../components/Layout/Footer/Footer";
 import Header from "../../components/Layout/Header/Header";
 import { ALL_FLIGHTS } from "../../store/store";
+import classes from "./SpaceXFlights.css";
 
 /*======================================================================
 // This container will request information for a specific SpaceX Flight
@@ -22,20 +21,9 @@ class SpaceXFlights extends Component {
   constructor() {
     super();
     this.state = {
-      flightInformation: {
-        flightNumber: null,
-        flightName: null,
-        flightYear: null,
-        flightDetails: null,
-        flightLaunchSite: null,
-        flightMissionPatch: null,
-        flightVideoEmbed: null,
-        flightTelemetry: null,
-        flightArticle: null,
-        flightSuccess: null
-      },
-      loading: true,
-      selectedFlight: 73
+      data: null,
+      selectedFlight: 82,
+      loading: true
     };
   }
 
@@ -44,74 +32,22 @@ class SpaceXFlights extends Component {
     // be made.
     ======================================================================*/
   componentDidMount() {
-    this.getInformation(this.state.selectedFlight);
+    this.getData();
   }
-
-  /*====================================================================== 
-    // When a user selects an option from the dropdown, a GET request
-    // will be made for the corresponding flight number.
-    ======================================================================*/
-  selectFlight = selectedNum => {
-    this.getInformation(selectedNum);
-    this.setState({
-      selectedFlight: selectedNum
-    });
-  };
 
   /*======================================================================
     // This will send a GET request to the SpaceX API to obtain details
-    // for a particular flight. Video links will be altered into an
-    // embeddable code. Telemetry will be set to the FlightClub homepage
-    // if no build is provided. This will also add a period to the end of
-    // the description if it's missing one (common).
+    // for all flights.
     ======================================================================*/
-  getInformation = query => {
+  getData = query => {
     this.setState({
       loading: true
     });
     axios
-      .get(`https://api.spacexdata.com/v2/launches?flight_number=${query}`)
-
+      .get(`https://api.spacexdata.com/v2/launches`)
       .then(res => {
-        let videoLink = res.data[0].links.video_link;
-        let videoEmbed = videoLink.slice(-11);
-        videoEmbed = videoEmbed.replace(/^/, "https://www.youtube.com/embed/");
-
-        let telemetry;
-        if (res.data[0].telemetry.flight_club === null) {
-          telemetry = "https://www.flightclub.io";
-        } else {
-          telemetry = res.data[0].telemetry.flight_club;
-        }
-
-        let outcome;
-        if (res.data[0].launch_success === true) {
-          outcome = "Mission Successful";
-        } else {
-          outcome = "Mission Failed";
-        }
-
-        let detail = res.data[0].details;
-        detail = detail.slice(-1);
-        if (detail !== ".") {
-          detail = res.data[0].details + ".";
-        } else {
-          detail = res.data[0].details;
-        }
-
         this.setState({
-          flightInformation: {
-            flightNumber: res.data[0].flight_number,
-            flightName: res.data[0].rocket.rocket_name,
-            flightYear: res.data[0].launch_year,
-            flightDetails: detail,
-            flightLaunchSite: res.data[0].launch_site.site_name_long,
-            flightMissionPatch: res.data[0].links.mission_patch,
-            flightVideoEmbed: videoEmbed,
-            flightTelemetry: telemetry,
-            flightArticle: res.data[0].links.article_link,
-            flightSuccess: outcome
-          },
+          data: res.data,
           loading: false
         });
       })
@@ -123,7 +59,18 @@ class SpaceXFlights extends Component {
       });
   };
 
+  /*====================================================================== 
+    // When a user selects an option from the dropdown, a GET request
+    // will be made for the corresponding flight number.
+    ======================================================================*/
+  selectFlight = selectedNum => {
+    this.setState({
+      selectedFlight: selectedNum
+    });
+  };
+
   render() {
+    const { data, selectedFlight, loading } = this.state;
     return (
       <Auxiliary>
         <div>
@@ -136,10 +83,10 @@ class SpaceXFlights extends Component {
             value={this.state.selectedFlight}
           />
           <article className={classes.Flight}>
-            {this.state.loading ? (
+            {loading ? (
               <div className={classes.Loader} />
             ) : (
-              <Flight flightInfo={this.state.flightInformation} />
+              <Flight flight={data[selectedFlight - 1]} />
             )}
           </article>
           <Footer />
